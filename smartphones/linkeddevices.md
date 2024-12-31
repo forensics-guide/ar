@@ -1,29 +1,29 @@
-# Vérifier les appareils liés aux applications de messagerie instantanée
+# فحص الأجهزة المرتبطة بتطبيقات الدردشة
 
-De nombreuses applications de messagerie instantanée permettent de lier un autre appareil au compte afin de lire et d'envoyer des messages à partir d'un ordinateur. Il est possible d'utiliser cette fonctionnalité pour accéder illégalement au compte et aux messages échangés par l'application, il est donc intéressant de vérifier qu'il n'y a pas de session inconnue ou de périphériques liés.
+تسمح العديد من تطبيقات الدردشة بربط جهاز آخر بالحساب من أجل قراءة وإرسال الرسائل من جهاز الكمبيوتر، ومن الممكن استخدام هذه الميزة للوصول بشكل غير مشروع إلى الحساب والرسائل التي يتبادلها التطبيق وبالتالي من المثير للاهتمام التأكد من عدم وجود جلسة غير معروفة أو أجهزة مرتبطة.
 
-## Signal
+## تطبيق سيغنال (Signal)
 
-Accédez à la page « Appareils liés » dans Paramètres (... dans le menu) \> Paramètres. Vous verrez une liste des appareils connectés. Vous pouvez appuyer sur n'importe quel appareil inconnu afin de le déconnecter.
+انتقل إلى صفحة "الأجهزة المرتبطة" في المعلمات (`...` في القائمة) > الإعدادات. سترى قائمة بالأجهزة المتصلة ويمكنك النقر على أي جهاز غير معروف لفصله.
 
-![A screenshot of the settings panel of the Signal messenger, with 'linked devices' selected](../.gitbook/assets/signal1.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-1128a212690210c3c4369f48967becd81f1e7234%252Fsignal1.png%3Falt%3Dmedia&width=300&dpr=4&quality=100&sign=77af05a2&sv=1) ![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-0a405f2c52fed8549410e33809dafe72a100b358%252Fsignal2.png%3Falt%3Dmedia&width=300&dpr=4&quality=100&sign=4c799e50&sv=1)
 
-## WhatsApp
+## تطبيق واتسآب (WhatsApp)
 
-Accédez à Paramètres (... dans le menu) et cliquez sur « WhatsApp Web ».
+انتقل إلى المعلمات (` ... ` في القائمة) وانقر على "WhatsApp Web"
 
-Vous pouvez voir ici tous les navigateurs Web connectés à votre compte WhatsApp.   
+ويمكنك أن ترى هنا جميع متصفحات الويب المتصلة بحساب WhatsApp الخاص بك.
 
-![A screenshot of WhatsApp, showing that it was last active today at 4:58pm on Chrome on Linux](../.gitbook/assets/whatsapp.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-5b4ebed3bba981ee2bd59bcd22dde328ccd97cd1%252Fwhatsapp.png%3Falt%3Dmedia&width=300&dpr=4&quality=100&sign=952f0849&sv=1)
 
-## Telegram
+## تطبيق تيليغرام (Telegram)
 
-Dans votre application Telegram, visitez la page Paramètres \> Confidentialité et sécurité \> Sessions actives. Cette page vous montre toutes les sessions actives liées à votre compte. Vous pouvez appuyer sur n'importe quelle session pour la terminer.
+في تطبيق تيليغرام انتقل إلى صفحة الإعدادات > الخصوصية والأمان > الجلسات النشطة. تعرض لك هذه الصفحة جميع الجلسات النشطة التي لديك والمرتبطة بحسابك ويمكنك النقر على أي جلسة لإنهائها.
 
-![A screenshot of active sessions in the Telegram messenger. It shows sessions in Telegram Web on Chrome on Linux and through a service called `ilovecrumble` running on Linux Desktop](../.gitbook/assets/telegram.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-fee29eb3c1412f92254d0968e0cb4c40b357bd84%252Ftelegram.png%3Falt%3Dmedia&width=300&dpr=4&quality=100&sign=c048dd6f&sv=1)
 
-## Wire
+## تطبيق واير (Wire)
 
-Dans l'application Wire, cliquez sur votre profil et accédez à  `Paramètres > Appareils` . Sur cette page, vous pouvez voir toutes les sessions ouvertes pour votre compte, y compris les applications pour smartphone, les applications de bureau et les sessions Web. Vous pouvez cliquer sur l'une de ces sessions et retirer le périphérique (vous aurez besoin de votre mot de passe pour le faire).  
+في تطبيق واير انقر على ملفك الشخصي وانتقل إلى `الإعدادات > الأجهزة` وفي هذه الصفحة يمكنك رؤية جميع الجلسات المفتوحة لحسابك بما في ذلك تطبيقات الهاتف الذكي وتطبيقات سطح المكتب وجلسات الويب. يمكنك النقر على أي من هذه الجلسات وإزالة الجهاز (ستحتاج إلى كلمة المرور الخاصة بك للقيام بذلك).
 
-![A screenshot of active sessions in Wire messenger. It shows that Wire is running on a Fairphone and on two other devices: a Google Pixel and a Linux install](../.gitbook/assets/wire.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-d1c03a9b46c0178013769d6ebb7973f771efdedc%252Fwire.png%3Falt%3Dmedia&width=300&dpr=4&quality=100&sign=14c5a93d&sv=1)

@@ -1,25 +1,28 @@
-# Vérifier la présence de messages suspects
+# التحقق من الرسائل المشبوهة
 
-Les messages contenant des liens sont un vecteur d'attaque courant.
+الرسائل التي تحتوي على روابط هي ناقل هجوم شائع.
 
 ![A screenshot of an online translation service, showing a message in Arabic and a translation into English. The translation says 'Turkey asks the Egyptian opposition channels to stop criticizing Egypt, and Cairo comments on the move...'](https://citizenlab.ca/wp-content/uploads/2021/12/Fig-7.png)
 
-*Un message contenant un lien qui infecte la cible avec le logiciel malveillant Cytrox Predator. Source : Citizen Lab*
+يمكن إرسال الروابط من أي تطبيقات مراسلة فورية أو رسائل نصية قصيرة، وهناك عدة أنواع من الروابط الضارة:
 
-Les liens peuvent être envoyés à partir de n'importe quelle application de messagerie instantanée ou SMS. Il existe quelques types de liens malveillants :
+| هدف الرابط                                        | هدف المهاجم                                                        | التطور  | التخفيف                                              |
+|--------------------------------------------------|--------------------------------------------------------------------|---------|-----------------------------------------------------|
+| موقع التصيد الاحتيالي، مثل صفحة ويب تشبه صفحة تسجيل الدخول إلى Google | خداع مستخدم ليدخل بيانات شخصية أو كلمات مرور                      | منخفض   | التحقق من أسماء نطاقات صفحة الويب وشهادات SSL         |
+| تنزيل التطبيق                                     | إقناع المستخدم بتنزيل التطبيق وتثبيته                              | منخفض   | لا تقم بتثبيت التطبيقات خارج متاجر التطبيقات            |
+| صفحة ويب تحتوي على ثغرات ويب، مثل البرمجة النصية عبر المواقع | سرقة ملفات تعريف الارتباط للجلسة عبر الإنترنت، أو تشغيل الجلسة المفتوحة حاليًا | متوسط   | لا تنقر على الروابط التي يرسلها أشخاص غير معروفين      |
+| صفحة ويب تحتوي على ثغرة أمنية في المتصفح          | استغلال ثغرة أمنية في المتصفح أو التطبيق                          | مرتفع   | لا تنقر على الروابط المرسلة من قبل أشخاص غير معروفين   |
 
-| Cible du lien | Objectif du cybercriminel | Complexité | Atténuation |
-| :---- | :---- | :---- | :---- |
-| Site d'hameçonnage, comme une page Web qui ressemble à la page de connexion de Google | Inciter l'utilisateur à saisir des données personnelles ou des mots de passe | Faible | Vérifier les noms de domaine et les certificats SSL des pages Web |
-| Téléchargement d'application | Convaincre l'utilisateur de télécharger et d'installer l'application | Faible | Ne pas installer les applications en dehors des magasins d'applications |
-| Page Web contenant des exploitations de failles Web, tels que XSS (Cross Site Scripting) | Voler les cookies de session en ligne ou exploiter la session actuellement ouverte | Moyenne | Ne pas cliquer sur les liens envoyés par des inconnus |
-| Page Web contenant une exploitation de faille de navigateur | Exploiter la vulnérabilité du navigateur ou de l'application | Élevée | Ne pas cliquer sur les liens envoyés par des inconnus |
 
-### Enregistrement des messages
+### حفظ الرسائل
 
-1. Copiez le message entier, y compris le lien dans le presse-papiers  
-2. Vous pouvez également enregistrer une capture d'écran contenant l'entièreté du texte  
-3. Si vous le pouvez, archivez le lien en utilisant la [Wayback Machine](https://web.archive.org/)
+1.  نسخ الرسالة بأكملها بما في ذلك الرابط إلى الحافظة
+    
+2.  بدلًا من ذلك احفظ لقطة شاشة تحتوي على النص الكامل
+    
+3.  قم بأرشفة الرابط باستخدام موقع [ويباك ماشين (Wayback Machine)](https://web.archive.org/) إذا كان ذلك ممكنًا.
+    
 
-### Vérification des liens
-Effectuez simplement une recherche du lien sur Google, ou collez le lien dans des sites comme VirusTotal.
+### فحص الروابط
+
+ما عليك سوى البحث في جوجل عن الرابط أو لصق الرابط في مواقع مثل فايروس توتال (VirusTotal).

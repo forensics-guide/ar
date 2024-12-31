@@ -1,9 +1,9 @@
-# Vérification des ordinateurs Windows
+# التحقق من أجهزة الكمبيوتر التي تعمل بنظام ويندوز (Windows)
 
-Dans cette section, nous allons passer en revue certaines des étapes de base à suivre lors de la vérification d'un ordinateur Windows suspect. Voici les outils (avec des liens vers leurs pages de téléchargement respectives) que nous allons présenter ici :
+سنتناول في هذا القسم بعض الخطوات الأساسية التي يجب اتخاذها عند التحقق من جهاز كمبيوتر يعمل بنظام ويندوز تشك بإصابته. فيما يلي الأدوات (مع روابط لصفحات التنزيل الخاصة بها) التي سنوضحها هنا:
 
-* [Sysinternals Autoruns](https://technet.microsoft.com/en-ca/sysinternals/bb963902.aspx) produit par Microsoft.  
-* [Sysinternals Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer) produit par Microsoft.  
-* [CrowdInspect](https://www.crowdstrike.com/resources/community-tools/crowdinspect-tool/) produit par CrowdStrike.  
-* [Sysinternals TCPView](https://technet.microsoft.com/en-us/sysinternals/tcpview.aspx) produit par Microsoft.  
-* [pcqf](https://github.com/botherder/pcqf) (anciennement SnoopDigg) produit par Claudio Guarnieri. (Dernière mise à jour en 2021.)
+* [سيسينترنال أتورانز (Sysinternals Autoruns) ](https://technet.microsoft.com/en-ca/sysinternals/bb963902.aspx) من إنتاج مايكروسوفت (Microsoft).
+* [سيسينترنال بروسيس إكسبلورر (Sysinternals Process Explorer) ](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer) من إنتاج مايكروسوفت.
+* [كراود إنسبكت (CrowdInspect)](https://www.crowdstrike.com/resources/community-tools/crowdinspect-tool/) من إنتاج كراود سترايك (CrowdStrike).    
+* [ سيسينترنال تي سي بي فيو (Sysinternals TCPView)](https://technet.microsoft.com/en-us/sysinternals/tcpview.aspx) من إنتاج مايكروسوفت.
+* [pcqf](https://github.com/botherder/pcqf) (تعرف سابقًا باسم سنوب ديغ SnoopDigg) من إنتاج كلوديو غوارنييري (Claudio Guarnieri). (تم آخر تحديث في عام 2021.)

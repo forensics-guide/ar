@@ -1,18 +1,21 @@
-# Extraire des données pour permettre une analyse plus approfondie
+# استخراج البيانات لإجراء تحليل إضافي
 
-[pcqf](https://github.com/botherder/pcqf) est un outil qui permet de vider les informations de démarrage et les processus actuels, ainsi que la mémoire pour permettre une analyse plus approfondie. Il est très utile, par exemple, si vous n'avez pas le temps de tout vérifier sur l'ordinateur et que vous voulez vérifier plus tard s'il y a des éléments suspects.
+تعد [pcqf](https://github.com/botherder/pcqf) أداة تسمح بتفريغ معلومات بدء التشغيل والعمليات الفعلية إلى جانب الذاكرة لأجل تحليلها أكثر، ومن المفيد حقًا على سبيل المثال إذا لم يكن لديك وقت للتحقق من كل شيء على الكمبيوتر وتريد التحقق مرة أخرى مما إذا كان هناك أي شيء مشبوه لاحقًا.
 
-Vous devez exécuter ce programme à partir d'une clé USB avec suffisamment d'espace de stockage, double-cliquez sur le fichier binaire et suivez les instructions.
+يجب تشغيل هذا البرنامج من قرص يو إس بي عليه مساحة تخزين كافية والنقر مرتين على الملف الثنائي واتباع التعليمات.
 
-![A screenshot of a window with a commandline program running therein. The program is PCQF and is asking the user if they would like to take a memory snapshot.](../.gitbook/assets/pcqf1.PNG)
+ما لم يكن لديك سبب وجيه للقيام بذلك من المستحسن عدم تسجيل لقطة للذاكرة لأنها تحتوي على الكثير من المعلومات الخاصة (قد تحتوي على كلمات مرور على سبيل المثال).
 
-À moins d'avoir une bonne raison de le faire, il est recommandé de ne pas prendre un instantané de mémoire, car il contient beaucoup d'informations privées (il peut contenir des mots de passe par exemple).
+بمجرد الانتهاء سيتم إنشاء مجلد باسم معرّف الاستحواذ (سلسلة من الأرقام السداسية العشرية) ويشمل:
 
-Une fois terminé, il crée un dossier nommé par l'ID d'acquisition (une séquence de nombres hexadécimaux) qui contient :
-
-* Un fichier `profile.json` contenant des informations de base sur le système de l'ordinateur.  
-* Un fichier `process_list.json` contenant une liste des processus en cours d'exécution.  
-* Un fichier `autoruns.json` contenant une liste de tous les éléments persistants sur le système.  
-* Un dossier `autoruns_bins/` contenant des copies des fichiers et exécutables marqués pour la persistance dans le fichier JSON précédent.  
-* Un dossier `process_bins/` contenant des copies de processus en cours d'exécution.  
-* Si vous le demandez, un dossier `memory/` contiendra un instantané de la mémoire physique ainsi que des métadonnées.
+* ملف `profile.json` يحتوي على معلومات أساسية على نظام الكمبيوتر.
+    
+* ملف `process_list.json` يحتوي على قائمة بالعمليات قيد التشغيل.
+    
+* ملف `autoruns.json` يحتوي على قائمة بجميع العناصر التي تستمر بالعمل على النظام.
+    
+* مجلد `autoruns_bins/` يحتوي على نسخ من الملفات والملفات التنفيذية التي تم تحديدها على أنها تستمر بالعمل في ملف JSON السابق.
+    
+* مجلد `process_bins/` يحتوي على نسخ عمليات قيد التشغيل.
+    
+* في حال طلبته سيحتوي مجلد `memory/` على تفريغ ذاكرة فعلي بالإضافة إلى بعض البيانات الوصفية.

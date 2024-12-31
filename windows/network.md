@@ -1,29 +1,27 @@
-# Examiner les connexions réseau
+# مراجعة اتصالات الشبكة
 
-Les logiciels espions devront à un moment ou à un autre transmettre les données recueillies (telles que les captures d'écran, les mots de passe, les frappes au clavier, etc.) à un emplacement distant, le [serveur de commande et de contrôle](https://www.crowdstrike.com/cybersecurity-101/cyberattacks/command-and-control/). Bien qu'il ne soit pas possible de prédire quand une telle transmission se produira, il est possible que certains logiciels espions établissent une liaison permanente avec le serveur ou qu'ils se connectent assez souvent pour vous permettre de les détecter.
+ستحتاج برمجيات التجسس في النهاية إلى نقل البيانات التي تم جمعها (مثل لقطات الشاشة وكلمات المرور وضغطات المفاتيح وما إلى ذلك) إلى موقع بعيد وهو [خادم القيادة والتحكم](https://www.crowdstrike.com/cybersecurity-101/cyberattacks/command-and-control/). وبالرغم من أنه من غير الممكن أن تتمكن من التنبؤ بموعد حدوث عمليات الإرسال هذه، من الممكن أن بعض برمجيات التجسس تجري اتصالًا دائم مع الخادم أو تتصل به بشكل متكرر بما يكفي لكشفها.
 
-Pour vérifier les connexions en cours, vous pouvez par exemple enregistrer tout le trafic réseau à l'aide de [Wireshark](https://www.wireshark.org/) et ensuite examiner les résultats stockés. Cependant, une approche plus intéressante consiste à utiliser des outils qui non seulement surveillent l'activité du réseau, mais qui peuvent également les lier aux processus en cours. En général, vous devriez rechercher des processus inhabituels se connectant à des adresses IP suspectes.
+من أجل التحقق من الاتصالات الجارية يمكنك على سبيل المثال تسجيل حركة مرور الشبكة بأكملها باستخدام [Wireshark](https://www.wireshark.org/) وفحص النتائج المخزنة لاحقًا، ولكن النهج الأكثر الأفضل هو استخدام الأدوات التي لا تراقب نشاط الشبكة فحسب بل يمكنها أيضًا ربطها بالعمليات قيد التشغيل. بشكل عام يجب أن تبحث عن عمليات غير عادية تتصل بعناوين بروتوكول إنترنت مشبوهة.
 
-Un outil populaire permettant cette fonction est [TCPView](https://technet.microsoft.com/en-us/sysinternals/tcpview.aspx), également issu de la suite Sysinternals de Microsoft.
+وإحدى الأدوات الشائعة للقيام بذلك هي [تي سي بي فيو (TCPView](https://technet.microsoft.com/en-us/sysinternals/tcpview.aspx)) أيضًا من سيسينترنال سويت (Sysinternals Suite) من مايكروسوفت.
 
-![A screenshot of Sysinternals TCPView. It shows several columns, including Process, PID, Protocol (which displays TCP, UDP, TCPV6, and UDPV6), local address, local port, remote address, and remote port.](../.gitbook/assets/tcpview.png)
+تُعدّ هذه الأداة سهلة للغاية فهي تسرد جميع اتصالات الشبكة القائمة وتوفر معلومات حول عملية المصدر والوجهة، ومن المحتمل أن تتفاجأ بملاحظة كمية اتصالات الشبكة النشطة حتى في الأنظمة التي تبدو خاملة. غالبًا ما سترى نشاط شبكة من العمليات الخلفية على سبيل المثال لخدمات مايكروسوفت وجوجل كروم وأدوبي ريدر (Adobe Reader) وسكايب (Skype) وما إلى ذلك.
 
-L'outil est assez simple : il énumère toutes les connexions réseau établies et fournit des informations sur le processus d'origine et la destination. Vous serez probablement surpris(e) d'observer la quantité de connexions réseau actives, même avec des systèmes apparemment inactifs. Le plus souvent, vous verrez une activité réseau à partir de processus en arrière-plan, par exemple, pour les services Microsoft, Google Chrome, Adobe Reader, Skype, etc.
+توجد أداة أخرى يمكننا استخدامها لمراقبة اتصالات الشبكة النشطة وهي كراود إنسبكت التي عرضناها في القسم السابق حول [فحص العمليات قيد التشغيل](https://pellaeon.gitbook.io/mobile-forensics/windows/processes). تشابه المعلومات التي تقدمها أداة كراود إنسبكت كثيرًا تلك التي تقدمها تي سي بي فيو.
 
-CrowdInspect, que nous avons présenté dans la section précédente sur [l'examen des processus en cours d'exécution](https://pellaeon.gitbook.io/mobile-forensics/windows/processes), est un autre outil que nous pouvons utiliser pour observer les connexions réseau actives. Les informations fournies par CrowdInspect sont très similaires à celles fournies par TCPView.
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-0df9444d13cda112b776049ff601600ce78e8fe3%252Fcrowdinspect_injection.png%3Falt%3Dmedia&width=768&dpr=4&quality=100&sign=ccd4f3c9&sv=1)
 
-![A screenshot of CrowdInspect, with a process called iexplore.exe selected, which has a red dot in the column marked Inject. That process has established a TCP connection. It is trying to connect to remote IP 216.6.0.28](../.gitbook/assets/crowdinspect_injection.png)
+على سبيل المثال، في لقطة الشاشة أعلاه يمكننا رؤية عملية `iexplore.exe` قيد التشغيل والتي تظهر عليها علامة _محقونة،_ ويبدو أيضًا أنها تحاول بنشاط الاتصال ببروتوكول إنترنت بعيد على العنوان `216.6.0.28`. نظرًا لعدم وجود نافذة ظاهرة لبرنامج إنترنت اكسبلورر تعمل على النظام، يثير الشك بالتأكيد مشاهدة اتصالات شبكة نشطة منه، ويظهر تي سي بي فيو كما يلي على النظام المصاب ذاته:
 
-Par exemple, dans la capture d'écran ci-dessus, nous pouvons voir un processus `iexplore.exe` en cours d'exécution qui non seulement a été signalé comme injecté, mais semble tenter activement de se connecter à l'adresse IP distante `216.6.0.28`. Vu qu'il n'y a aucun navigateur Internet visible sur le système, il est très suspect de voir des connexions réseau actives à partir de ce processus. TCPView apparaîtrait comme suit sur le même système infecté :
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-4a422efefc0fa08dd19d89ef97b6d556200cbc98%252Ftcpview_infected.png%3Falt%3Dmedia&width=768&dpr=4&quality=100&sign=ec4f4c02&sv=1)
 
-![A screenshot of TCP view, with a process called iexplore.exe selected. That process is trying to connect to remote IP 216.6.0.28, the same IP as in the above screenshot.](../.gitbook/assets/tcpview_infected.png)
+(ملاحظة: تعرض هذه الأدوات محاولات الاتصال بالمواقع البعيدة حتى لو كان الكمبيوتر في الوقت الحالي غير متصل بالإنترنت).
 
-(Remarque : ces outils affichent les tentatives de connexion à des emplacements distants, même si l'ordinateur est actuellement déconnecté d'Internet).
-
-Lorsque vous avez des doutes sur une connexion active, vous pouvez (de préférence à partir d'un ordinateur séparé) rechercher l'adresse IP et essayer de déterminer à qui elle appartient et si elle est connue comme étant inoffensive ou malveillante, en utilisant par exemple des outils en ligne comme [Central Ops](https://centralops.net/co/) ou [ipinfo](https://ipinfo.io/). Par exemple, une simple recherche WHOIS pour cette adresse IP renvoie :
+عندما تشك في وجود اتصال نشط يمكنك (ويفضل أن تقوم بذلك من جهاز كمبيوتر منفصل) البحث عن عنوان بروتوكول الإنترنت ومحاولة تحديد لمن يعود وما إذا كان معروفًا أنه سليم أم ضار باستخدام أدوات عبر الإنترنت مثل [Central Ops](https://centralops.net/co/) أو [ipinfo](https://ipinfo.io/). على سبيل المثال، ينتج عن بحث WHOIS بسيط يتعلق بعنوان بروتوكول الإنترنت هذا:
 
 ```
-NetRange:       216.6.0.0 \- 216.6.1.255  
+NetRange:       216.6.0.0 - 216.6.1.255  
 CIDR:           216.6.0.0/23  
 NetName:        SYRIAN-5  
 NetHandle:      NET-216-6-0-0-2  
@@ -48,7 +46,6 @@ RegDate:        2005-07-21
 Updated:        2011-09-24  
 Ref:            https://rdap.arin.net/registry/entity/SSTE
 ```
+يشير هذا إلى أن برنامج `iexplore.exe` المحقون كان يحاول بشكل مريب للغاية الاتصال بعنوان بروتوكول إنترنت موجود في سوريا. في الواقع ولغرض العرض التوضيحي استخدمنا نسخة قديمة من فيروس حصان طروادة الذي يتيح الوصول عن بُعد المسمى DarkComet الذي عثر على أنه يُستخدم في سوريا في عام  2011 تقريبا,
 
-Cela suggère que le processus injecté `iexplore.exe` est très suspect et tente de se connecter à une adresse IP située en Syrie. En effet, pour la démonstration, nous avons utilisé une ancienne copie de DarkComet RAT qui a été utilisée en Syrie en 2011\.
-
-Même une simple recherche de l'adresse IP sur votre moteur de recherche préféré pourrait révéler des informations utiles. En outre, vous pouvez envisager d'utiliser des services de recherche de menaces tels que [RiskIQ](https://community.riskiq.com/) ou [ThreatMiner](https://www.threatminer.org/) pour voir s'ils ont des informations sur les adresses IP ou les noms de domaine que vous rencontrez.
+وحتى بحث بسيط عن عنوان بروتوكول الإنترنت عبر محرك البحث المفضل لديك قد يكشف عن معلومات مفيدة. بالإضافة إلى ذلك، قد ترغب في التفكير في استخدام خدمات أبحاث التهديدات مثل [ريسك آي كيو (RiskIQ)](https://community.riskiq.com/) أو [ثريت ماينر (ThreatMiner)](https://www.threatminer.org/) لمعرفة ما إذا كان لديهم أي معلومات عن عناوين بروتوكول الإنترنت أو أسماء النطاقات التي تصادفها.

@@ -1,36 +1,47 @@
-# Architecture des systèmes de smartphones
+# بنية نظام الهاتف الذكي
 
-Les smartphones sont essentiellement de petits ordinateurs portables, la principale différence architecturale par rapport aux ordinateurs étant :
+الهواتف الذكية هي في الأساس أجهزة كمبيوتر صغيرة محمولة باليد وتتميز بنيتها بشكل أساسي عن أجهزة الكمبيوتر فيما يلي:
 
-* Systèmes plus verrouillés :  
-  * Chargeurs d'amorçage non personnalisables  
-* Ajout de coprocesseurs à but spécialisé  
-  * Enclave sécurisée  
-  * Bande de base  
-  * Traitement des images  
-  * Accélération IA
+* تتمتع الأنظمة بتأمين أكبر:
+    
+    * محمّلات إقلاع لا يُسمح بتخصيصها.
+        
+    
+* إضافة معالجات مشتركة لأغراض خاصة.
+    
+    * الجيب الأمني
+        
+    * النطاق الأساسي
+        
+    * معالجة الصور
+        
+    * التسريع باستخدام الذكاء الاصطناعي
+        
+    
 
-### Coprocesseurs
+### المعالجات المشتركة
 
-Les coprocesseurs sont des processeurs utilisés uniquement à une fin particulière autre que l'exploitation du système. Les coprocesseurs aident le processeur principal à gérer certaines tâches et doivent donc communiquer avec lui. Les coprocesseurs utilisent souvent leur propre système d'exploitation et application intégrés, et ne peuvent pas être directement contrôlés par l'utilisateur. Les coprocesseurs ont souvent un accès privilégié aux ressources du système et aux données des utilisateurs, de sorte qu'ils sont parfois la cible d'exploitations plus sophistiquées. En raison de leur nature verrouillée, il est difficile d'effectuer des audits ou d'obtenir des données d'analyse à partir des coprocesseurs. Pour les besoins de ce guide, vous devez seulement savoir que :
+المعالجات المشتركة هي معالجات تستخدم فقط لغرض معين بخلاف النظام، وتساعد _معالج التطبيق_ الرئيسي على التعامل مع مهام معينة وبالتالي التواصل معه. غالبًا ما تقوم المعالجات المشتركة بتشغيل نظام تشغيل مضمن والتطبيق المضمّن الخاص بها ولا يمكن التحكم فيها مباشرة من قبل المستخدم. غالبًا ما يتمتع المعالجون المشاركون بامتياز الوصول إلى موارد النظام وبيانات المستخدم ولذلك يكونون أحيانًا أهدافًا لاستغلال أكثر تعقيدًا، ونظرًا لطبيعة الإغلاق من الصعب تدقيق بيانات التحليلات الجنائية أو الحصول عليها من المعالجات المشتركة. لأغراض هذا الدليل ستحتاج فقط إلى معرفة ما يلي:
 
-* Les coprocesseurs peuvent présenter des failles qui peuvent être exploitées  
-* Les exploitations de failles des coprocesseurs sont sophistiquées et peu communes
+* يمكن استغلال المعالجات المشتركة.
+    
+* الثغرات التي تستهدف المعالج المشارك متطورة وغير شائعة.
+    
 
-Le reste de ce guide se concentrera donc sur les logiciels fonctionnant sur le processeur d'application.
+وبالتالي سيركز بقية هذا الدليل على البرامج التي تعمل على معالج التطبيقات.
 
-### Système d'exploitation
+### نظام التشغيل
 
-Les systèmes d'exploitation des smartphones diffèrent des systèmes d'exploitation des ordinateurs en ce sens qu'ils mettent en œuvre davantage de contrôles et d'isolement entre les différents composants du système et les applications, de sorte qu'un composant compromis ne pourrait pas facilement affecter l'ensemble du système.
+تختلف أنظمة تشغيل الهواتف الذكية عن أنظمة تشغيل الكمبيوتر من حيث أنها تُطبق ضوابط إضافية وعزلًا أكبر بين مكونات وتطبيقات النظام المختلفة بحيث لا يمكن لمكون مخترق أن يؤثر بسهولة على النظام بأكمله.
 
-![An illustration of the Android software stack. For an explanation of all its components, check out https://developer.android.com/guide/platform](https://developer.android.com/guide/platform/images/android-stack_2x.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2Fdeveloper.android.com%2Fguide%2Fplatform%2Fimages%2Fandroid-stack_2x.png&width=768&dpr=4&quality=100&sign=58f907a5&sv=1)
 
-Il est possible pour les cybercriminels d'exploiter des vulnérabilités du noyau, mais ces vulnérabilités sont assez rares et nécessitent généralement des techniques sophistiquées pour être exploitées.
+من الممكن للمهاجمين استغلال ثغرات النواة (Kernel) ولكن هذه الثغرات نادرة جدًا وعادة ما تتطلب تقنيات متطورة لاستغلالها.
 
-### Applications du système
+### تطبيقات النظام
 
-Les applications du système peuvent contenir des vulnérabilités. Une fois exploitées, elles peuvent causer plus de dommages que l'exploitation des applications de l'utilisateur, car elles ont généralement plus de privilèges pour apporter des modifications au système sous-jacent. Un exemple courant est le navigateur intégré, qui est souvent exploité.
+قد تعاني تطبيقات النظام من ثغرات أمنية، وبمجرد استغلالها يمكن أن تتسبب في ضرر أكبر من استغلال تطبيقات المستخدم لأنها عادة ما تتمتع بامتيازات أكبر تسمح تغيير النظام الأساسي. ومن الأمثلة الشائعة على ذلك هو المتصفح المدمج والذي يكثر استغلاله.
 
-### Applications de l'utilisateur
+### تطبيقات المستخدم
 
-Les applications de l'utilisateur ont moins de privilèges. Toutefois, si les autorisations sont accordées, elles peuvent accéder à des informations personnelles de l'utilisateur, ce qui peut toujours causer beaucoup de tort. Parfois, elles peuvent également tromper ou exploiter le système sous-jacent pour obtenir plus de contrôle.
+تتمتع تطبيقات المستخدم بأقل الامتيازات، لكن في حال تم منحها الأذونات يمكنها الوصول إلى معلومات المستخدم الحساسة وبالتالي لا يزال بإمكانها التسبب في ضرر كبير. كما يمكنها في بعض الأحيان خداع أو استغلال النظام الأساسي لكسب تحكم أكبر.

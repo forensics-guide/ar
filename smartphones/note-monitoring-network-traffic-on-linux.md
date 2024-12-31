@@ -1,27 +1,27 @@
 ---
 description: >-
-  Cette page sert de remarque pour la configuration de la surveillance du trafic réseau sur Linux.
+  هذه الصفحة بمثابة ملاحظتي لإعداد مراقبة حركة مرور الشبكة على لينوكس.
 ---
 
-# Remarque : surveillance du trafic réseau sur Linux
+# ملاحظة: مراقبة حركة مرور الشبكة على لينوكس (Linux)
 
-## Configuration du partage Wi-Fi
+## تكوين مشاركة واي فاي
 
-Utiliser KDE
+استخدام بيئة KDE:
 
-1. Branchez un adaptateur Wi-Fi qui prend en charge le mode AP.  
-2. Cliquez avec le bouton droit de la souris sur l'icône Réseau dans la barre des tâches. Cliquez sur *Configurer les connexions réseau*.  
-3. Cliquez sur Ajouter, sélectionnez *Wi-Fi (partagé)*.  
-4. Sous l'onglet Wi-Fi, configurez :  
-  1. SSID : ce que vous voulez  
-  2. Périphérique : sélectionnez l'adaptateur que vous venez de brancher.  
-  3. Sécurité sans fil : configurez un mot de passe personnel WPA2  
-  4. IPv4 : *Méthode : partager avec les autres ordinateurs*  
-5. Choisissez un nom de connexion (le nom du profil réseau)  
-6. Enregistrez  
-7. Cliquez avec le bouton gauche de la souris sur l'icône du réseau, puis cliquez sur Connecter sur le nom de connexion que vous venez de créer.  
-8. L'AP devrait être démarré et vous devriez le voir à partir d'autres appareils avec le SSID que vous venez de configurer.
+1.  قم بتوصيل محول واي فاي يدعم وضع نقطة الوصول.
+2.  انقر بالزر الأيمن على أيقونة الشبكة في شريط المهام. انقر على _تكوين اتصالات الشبكة._
+3.  انقر على _إضافة_ وحدد _واي فاي (مشترك)._
+4.  ضمن علامة تبويب واي فاي، اضبط:
+    1.  معرّف مجموعة خدمات الشبكة: أي اسم تريده
+    2.  حد الأجهزة: اختر المحول الذي قمت بتوصيله للتو.        
+    3.  أمان الشبكة اللاسلكية: تكوين كلمة مرور WPA2 الشخصية>
+    4.  بروتوكول الإنترنت الإصدار 4 (IPv4): _الطريقة_: _المشاركة مع أجهزة الكمبيوتر الأخرى_
+5.  اختر اسم اتصال (اسم ملف تعريف الشبكة عمليًا).
+6.  حفظ.
+7.  انقر بزر الماوس الأيمن على أيقونة الشبكة، وانقر على الاتصال على اسم الاتصال الذي أنشأته للتو.
+8.  يجب الآن بدء نقطة الوصول ويجب أن تراها من الأجهزة الأخرى التي قمت بتكوينها للتو.
+    
+## تكوين إعادة التوجيه إلى وكيل الاعتراض.
 
-## Configuration d'une redirection vers un proxy d'interception
-
-Pour les analyses mobiles, il n'est généralement pas nécessaire d'intercepter le trafic SSL, car pour y parvenir, il faudrait normalement configurer une autorité de certification (CA) SSL autosignée pour l'appareil mobile et la plupart des applications ne font pas confiance aux CA SSL importés par l'utilisateur. Pour que les applications fassent confiance à l'autorité de certification autosignée, il faudrait rooter le périphérique Android, ce qui n'est pas recommandé, car lors de la conduite d'une analyse approfondie, le périphérique en question ne devrait pas être modifié.
+بالنسبة للتحليلات الجنائية على الجوال، ليس من الضروري عادةً اعتراض حركة مرور طبقة المقابس الآمنة لأنه لأجل اعتراضها سيتعين على المرء عادةً تكوين هيئة شهادات طبقة مآخذ توصيل آمنة موقّعة ذاتيًا (CA) للجهاز المحمول ومع ذلك فإن معظم التطبيقات لا تثق في مرجع هيئة شهادات طبقة مآخذ توصيل آمنة موقّعة ذاتيًا الذي يستورده المستخدم. كي تجعل التطبيقات تثق بهيئة الشهادات الموقعة ذاتيًا يتوجب تجذير جهاز آندرويد وهو أمر غير موصى به لأنه عند إجراء التحليلات الجنائية يجب عدم تغيير الجهاز المعني.

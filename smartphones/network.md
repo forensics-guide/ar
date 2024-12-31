@@ -1,74 +1,90 @@
-# Surveiller le trafic réseau
+# مراقبة حركة المرور على الشبكة
 
-La surveillance du trafic réseau à partir d'un téléphone est l'une des meilleures façons d'identifier les activités malveillantes sans interagir avec le téléphone mobile, ce qui permet de contourner tout mécanisme que le logiciel malveillant peut avoir développé pour contourner la détection. Mais cela nécessite un outil externe pour enregistrer le trafic et une certaine connaissance du réseau pour identifier le trafic suspect.
+تُعدّ مراقبة حركة المرور على الشبكة خلال الهاتف إحدى أفضل الطرق لتحديد النشاط الضار دون التفاعل مع الهاتف المحمول وبالتالي تجاوز أي آلية قد تكون البرمجيات الضارة قد طورتها لتجنب الكشف، ولكنه أمر يتطلب أداة خارجية لتسجيل حركة المرور وبعض المعرفة بالشبكة لتحديد حركة المرور المشبوهة.
 
-## Limitations
+### الحدود
 
-De nombreuses applications mobiles et logiciels malveillants permettent désormais le « SSL Pinning », qui complique pour nous le déchiffrement de leur trafic. La seule façon de contourner le SSL Pinning est de rooter/jailbreak l'appareil et d'utiliser des outils tels que Frida. Cependant, dans le but de l'analyse, nous ne devons le faire que si nous soupçonnons fortement qu'un trafic malveillant est caché avec un chiffrement SSL.
+تقوم العديد من تطبيقات الأجهزة المحمولة والبرمجيات الضارة الآن بتمكين "تثبيت طبقة مآخذ توصيل آمنة (SSL Pinning)" مما يجعل من الصعب علينا فك تشفير حركة المرور الخاصة بها. وتُعدّ الطريقة الوحيدة لتجاوز تثبيت طبقة مآخذ توصيل آمنة هي تجذير (root) أو اختراق حماية (jailbreak) جهاز واستخدام أدوات مثل فريدا (Frida). لكن من أجل تحقيق هدف التحليلات الجنائية نحتاج فقط إلى القيام بذلك إذا كنا نشك بشدة في أن حركة المرور الضارة مخفية بتشفير تثبيت طبقة مآخذ توصيل آمنة.
 
-## Surveiller les requêtes DNS
+## مراقبة استعلامات خدمة أسماء المجالات
 
-Au lieu de surveiller le trafic réseau complet, ce qui nécessite une configuration complexe, nous pouvons simplement surveiller les requêtes DNS. La plupart des systèmes d'exploitation permettent aux utilisateurs de configurer leurs propres serveurs DNS. Nous pouvons configurer notre propre serveur DNS pour enregistrer les requêtes et pointer le périphérique contrôlé vers notre serveur.
+بدلًا من مراقبة حركة مرور الشبكة الكاملة والتي تتطلب إعدادًا معقّدًا يمكننا مراقبة استعلامات نظام اسم المجال، وتسمح معظم أنظمة التشغيل للمستخدمين بتكوين خوادم نظام اسم المجال الخاصة بهم. ويمكننا تكوين خادم نظام اسم المجال الخاص بنا لتسجيل الاستعلامات وتوجيه الجهاز قيد الاختبار إلى خادمنا.
 
-Nous pouvons déployer notre propre serveur DNS avec :
+يمكننا نشر خادم نظام اسم المجال الخاص بنا من خلال:
 
-* Pi-hole  
-* Adguard Home
+* تطبيق باي هول (Pi-hole).
+    
+* تطبيق أدغارد هوم (Adguard Home).
+    
 
-Ou utiliser un serveur DNS basé sur le cloud comme NextDNS. L'inconvénient des serveurs DNS basés sur le cloud est que le fournisseur du cloud sera en mesure de voir les requêtes des appareils.
+أو استخدم خادم نظام اسم المجال قائم على السحابة مثل نيكست دي إن إس (NextDNS). يُعدّ الجانب السلبي لخادم خدمة اسم المجال المستند إلى السحابة هو أن مزود السحابة سيكون قادرًا على رؤية استعلامات الأجهزة.
 
-NextDNS est un fournisseur de DNS en cloud qui vous permet de configurer un serveur DNS sans compte. NextDNS fournit également des applications pour les principaux systèmes d'exploitation afin de configurer le périphérique pour utiliser votre serveur personnalisé. Pour commencer, accédez à [https://my.nextdns.io/start](https://my.nextdns.io/start), qui créera un *ID de configuration* temporaire, que vous devrez saisir dans l'application NextDNS. Ensuite, toutes les requêtes DNS que le téléphone effectuera seront enregistrées dans l'onglet *Logs*.
+أحد مزودي خدمة أسماء المجالات السحابية هو نيكست دي إن إس والذي يسمح لك بتكوين خادم خدمة أسماء المجالات بدون حساب. يوفر نيكست دي إن إس أيضًا تطبيقات لأنظمة التشغيل الرئيسية لتكوين الجهاز لاستخدام الخادم المخصص الخاص بك. انتقل أولًا إلى https://my.nextdns.io/start لإنشاء _معرّف تكوين مؤقت_ يجب عليك إدخاله في تطبيق نيكست دي إن إس. بعدها سيتم تسجيل جميع استعلامات نظام أسماء النطاقات التي يجريها الهاتف في علامة التبويب _السجلات_.
 
-![Requêtes DNS enregistrées dans NextDNS](../.gitbook/assets/Screenshot_20220506_165152.png)
+## مراقبة حركة مرور الشبكة الكاملة من راوتر واي فاي
 
-## Surveiller le trafic réseau complet à partir d'un routeur Wi-Fi
+تتمثل إحدى طرق مراقبة حركة مرور الشبكة من هاتفك في تسجيل حركة المرور مباشرة من جهاز راوتر واي فاي المتصل به هاتفك المحمول. حسب جهاز راوتر واي فاي الخاص بك قد يكون من الممكن تسجيل حركة المرور مباشرة منه (باستخدام أداة مثل [tcpdump](https://www.tcpdump.org/)).
 
-Une des façons de surveiller le trafic réseau à partir de votre téléphone consiste à enregistrer le trafic directement à partir d'un routeur Wi-Fi utilisé par votre téléphone mobile. Selon votre routeur Wi-Fi, il peut être possible d'enregistrer le trafic directement à partir de celui-ci (en utilisant un outil comme [tcpdump](https://www.tcpdump.org/)).
+إذا لم تتمكن من تسجيل حركة المرور باستخدام جهاز راوتر واي فاي الفعلي فيمكنك بسهولة إنشاء جهاز توجيه باستخدام [رازبيري باي (Raspberry Pi)](https://www.raspberrypi.org/) وبرنامج راسب أيه بي [(RaspAP)](https://raspap.com/) (انظر [هنا](https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/) لمشاهدة دليل حول كيفية تثبيته).
 
-Si vous ne pouvez pas enregistrer le trafic en utilisant votre routeur Wi-Fi actuel, vous pouvez facilement créer un routeur à l'aide d'un [Raspberry Pi](https://www.raspberrypi.org/) et du logiciel [RaspAP](https://raspap.com/) (vous trouverez [ici](https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/) un tutoriel sur la façon de l'installer).
+بمجرد تثبيت جهاز راوتر الخاص بك، يمكنك الاتصال به باستخدام ssh والبدء في التقاط حركة المرور باستخدام [tcpdump](https://www.tcpdump.org/). ثم قم بتوصيل الهاتف المحمول الذي تريد اختباره بشبكة الواي فاي هذه وسجل حركة المرور لمدة 30 دقيقة حتى ساعة واحدة.
 
-Une fois votre routeur installé, vous pouvez vous y connecter en utilisant ssh et commencer à capturer le trafic en utilisant [tcpdump](https://www.tcpdump.org/). Ensuite, connectez le téléphone mobile que vous souhaitez tester à ce réseau Wi-Fi et enregistrez le trafic pendant 30 minutes à une heure.
+بعد نهاية التسجيل قم بتنزيل ملف pcap على جهاز الكمبيوتر الخاص بك وراجع حركة مرور الشبكة باستخدام [واير شارك (WireShark)](https://www.wireshark.org/). تحقق بشكل خاص من العناصر التالية:
 
-Au terme de la capture, téléchargez le fichier pcap sur votre ordinateur et passez en revue le trafic réseau à l'aide de [WireShark](https://www.wireshark.org/). Vérifiez particulièrement les éléments suivants :
+* اتصالات بعناوين بروتوكول الإنترنت بدون طلبات نظام اسم المجال.
+    
+* اتصالات بالنطاقات غير المدرجة في قوائم أليكسا توب [(Alexa Top)](https://www.alexa.com/siteinfo).
+    
+* اتصالات على منافذ بخلاف 80 و443.
+    
 
-* Connexions aux adresses IP sans requêtes DNS  
-* Connexions à des domaines qui ne sont pas répertoriés dans les listes [Alexa Top](https://www.alexa.com/siteinfo)  
-* Connexions à des ports autres que 80 et 443
+إذا وجدت أي حركة مرور مشبوهة إلى عنوان بروتوكول الإنترنت أو نطاق يمكنك استخدام الأدوات التالية للحصول على مزيد من المعلومات عنه:
 
-Si vous trouvez un trafic suspect vers une adresse IP ou un domaine, vous pouvez utiliser les outils suivants pour obtenir plus d'informations à ce sujet :
+* تسمح [سنترال أوبس (CentralOps)](https://centralops.net/co/) برؤية مالك عنوان بروتوكول الإنترنت أو هو إز (WHOIS) للنطاق (لا يتطلب حسابًا).
+    
+* تسمح [ريسك آي كيو (RiskIQ)](https://community.riskiq.com/home) برؤية سجل نظام اسم المجال وفيه العديد من المؤشرات حول عناوين بروتوكولات الإنترنت والنطاقات الضارة (يتطلب حسابًا وعددًا محدودًا من الاستعلامات مع حساب مجاني).
+    
+* تُعدّ [إلينفولت أو تي إكس (AlienVault OTX)](https://otx.alienvault.com/) قاعدة بيانات كبيرة بالمؤشرات الضارة، يمكنك البحث عن عنوان بروتوكول الإنترنت هذا أو النطاق فيه لمعرفة ما إذا كان هناك نشاط ضار معروف منه (يتطلب حسابًا مجانيًا).
+    
 
-* [CentralOps](https://centralops.net/co/) permet de voir le propriétaire d'une IP ou le whois d'un domaine (ne nécessite pas de compte)  
-* [RiskIQ](https://community.riskiq.com/home) permet de voir l'historique DNS et offre beaucoup d'indications sur les adresses IP et les domaines malveillants (nécessite un compte, nombre limité de requêtes avec un compte gratuit)  
-* [AlienVault OTX](https://otx.alienvault.com/) est une grande base de données d'indicateurs malveillants, vous pouvez y rechercher l'IP ou le domaine pour voir s'ils sont associés à des activités malveillantes connues (nécessite un compte, gratuit)
+لإعداد بيئة لتحليل حركة المرور، راجع [هذا الدليل](https://mobile-security.gitbook.io/mobile-security-testing-guide/general-mobile-app-testing-guide/0x04f-testing-network-communication).
 
-Pour configurer un environnement d'analyse du trafic, reportez-vous à [ce guide](https://mobile-security.gitbook.io/mobile-security-testing-guide/general-mobile-app-testing-guide/0x04f-testing-network-communication).
+## مراقبة حركة مرور الشبكة باستخدام تطبيقات على الجهاز
 
-## Surveiller le trafic réseau avec des applications installées sur l'appareil
+تعمل هذه التطبيقات عادةً عن طريق إنشاء خادم شبكة ظاهرية خاصة على الجهاز وتكوين النظام لاستخدام خادم هذه الشبكة.
 
-Ces applications fonctionnent généralement en créant un serveur VPN sur l'appareil et en configurant le système pour utiliser le serveur VPN.
+* [نت غارد (NetGuard)](https://netguard.me/): لنظام آندرويد مفتوح المصدر.
+    
+* [لك داون (Lockdown)](https://lockdownprivacy.com/firewall): لنظام آي أو إس مفتوح المصدر.
+    
+* [بلوكادا (Blokada)](https://apps.apple.com/us/app/blokada/id1508341781): لنظام آي أو إس خاص.
+    
 
-* [NetGuard](https://netguard.me/) : pour Android, open source  
-* [Lockdown](https://lockdownprivacy.com/firewall) : pour iOS, open source  
-* [Blokada](https://apps.apple.com/us/app/blokada/id1508341781) : pour iOS, propriétaire
+## كيف تبحث عن حركة مرور مشبوهة؟
 
-### Comment rechercher un trafic suspect ?
+السلوكيات التالية أكثر إثارة للشك:
 
-* Les comportements suivants sont plus suspects :  
-* Les applications ou connexions qui génèrent beaucoup de trafic de données.  
-* Les applications ou connexions qui envoient plus de données qu'elles n'en reçoivent.  
-* Les connexions qui se produisent périodiquement.  
-* Les noms de domaine étranges. Si vous en rencontrez, il suffit de les rechercher sur Google ou VirusTotal.  
-* Les ports inhabituels.  
-* L'envoi ou la réception de données lorsque l'utilisateur n'utilise pas le téléphone. (P. ex., lorsqu'il dort.)
+* التطبيقات أو الاتصالات التي تولد الكثير من حركة مرور البيانات.
+    
+* التطبيقات أو الاتصالات التي تحمّل بيانات أكثر من التنزيل.
+    
+* الاتصالات التي تحدث بشكل دوري.
+    
+* أسماء النطاقات الغريبة، والتي عند مواجهتها ما عليك سوى البحث عنها على Google أو VirusTotal.
+    
+* منافذ غير شائعة.
+    
+* إرسال أو استقبال البيانات عندما لا يكون الهاتف قيد الاستخدام، (مثل ما يكون المستخدم في فترة النوم.)
+    
 
-## Utiliser un VPN d'urgence de Civil Sphere
+## استخدام الشبكة الافتراضية الخاصة لحالات الطوارئ في المجال المدني
 
-Le projet [Civil Spher](https://www.civilsphereproject.org/what-we-do)e, une organisation née au sein du [Stratosphere Research Laboratory](https://www.stratosphereips.org/) à l'Université technique tchèque de Prague, offre un service [VPN d'urgence](https://www.civilsphereproject.org/emergency-vpn) pour identifier les appareils compromis.
+تقدم منظمة [مشروع المجال المدني (Civil Sphere Project)](https://www.civilsphereproject.org/what-we-do) وهي منظمة ولدت من [مختبر أبحاث الستراتوسفير (Stratosphere Research Laboratory)](https://www.stratosphereips.org/) في الجامعة التقنية التشيكية في براغ، خدمة [شبكة ظاهرية خاصة طارئة](https://www.civilsphereproject.org/emergency-vpn) لكشف الأجهزة المخترقة.
 
-Le service VPN d'urgence permet d'analyser et de repérer les trafics suspects à partir des appareils mobiles utilisés par les journalistes et les ONG. [Sur demande](https://www.civilsphereproject.org/get-started), l'équipe de Civil Sphere vous enverra des identifiants pour vous connecter à leur VPN avec votre téléphone. Via leur VPN, ils enregistreront l'ensemble du trafic sortant de votre téléphone pendant un maximum de trois jours. À la fin de l'enregistrement, ils analyseront le trafic en utilisant des techniques automatisées et manuelles afin d'identifier les activités malveillantes ou les problèmes de sécurité dans les applications exécutées sur votre téléphone, et ils vous enverront le résultat de cette analyse par courrier électronique.
+تسمح خدمة الشبكة الظاهرية الخاصة الطارئة بتحليل وتحديد حركة المرور المشبوهة من جهاز محمول يستخدمه الصحفيون والمنظمات غير الحكومية. [عند تقديم الطلب](https://www.civilsphereproject.org/get-started) سيرسل لك فريق المنظمة بيانات الاعتماد لتسجيل الدخول إلى الشبكة الخاصة بهم باستخدام هاتفك، وخلال استخدام الشبكة سيقومون بتسجيل جميع الزيارات القادمة من هاتفك لمدة أقصاها ثلاثة أيام. في نهاية التسجيل، سيقومون بتحليل حركة المرور باستخدام التقنيات الآلية واليدوية من أجل تحديد النشاط الضار أو المشكلات الأمنية في التطبيقات التي تعمل على هاتفك وإرسال نتيجة هذا التحليل إليك عبر البريد الإلكتروني.
 
-![A graphic of Emergency VPN, giving users a step-by-step guide on how it works. It asks them to 1. download the application 2. request a VPN account 3. import the new profile into your OpenVPN application 4. install and authorize the profile in your OpenVPN application 5. connect to the VPN for up to 3 days to give us enough data to analyze 6. receive a report from the team about any security threats or concerns you should be aware of](../.gitbook/assets/emergencyvpn.png)
+![](https://pellaeon.gitbook.io/~gitbook/image?url=https%3A%2F%2F3800278430-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F0nYvTpYLyJhfHy1skKdP%252Fuploads%252Fgit-blob-f391d4543abcccfde6876b7daad625661e532515%252Femergencyvpn.png%3Falt%3Dmedia&width=768&dpr=4&quality=100&sign=157bac3e&sv=1 "")
 
-Une des limitations de cette technique est que vous devez fournir le trafic réseau de votre téléphone mobile à une organisation tierce (Civil Sphere), vous [pouvez les contacter](https://www.civilsphereproject.org/get-started) pour avoir plus d'informations sur la façon dont ces données sont stockées et utilisées. L'avantage de cette solution est que vous pouvez compter sur eux pour effectuer l'analyse du le trafic réseau, ce qui peut être un processus complexe et long.
+يتمثل أحد قيود هذه التقنية في أنه يتعين عليك توفير حركة مرور الشبكة من هاتفك المحمول إلى منظمة تابعة لجهة خارجية أي منظمة مشروع المجال المدني، لكن يمكنك [الاتصال بهم](https://www.civilsphereproject.org/get-started) للحصول على مزيد من المعلومات حول كيفية تخزين هذه البيانات واستخدامها. تتمثل ميزة هذا الحل في أنه يمكنك الاعتماد عليها لتحليل حركة مرور الشبكة والتي يمكن أن تكون عملية معقدة وتستغرق وقتًا طويلًا.
 
-Consultez [leur site Web](https://www.civilsphereproject.org/emergency-vpn) pour obtenir plus d'informations.
+تحقق من [موقع الويب الخاص بهم](https://www.civilsphereproject.org/emergency-vpn) لمزيد من المعلومات.

@@ -1,5 +1,5 @@
-# Vérification des smartphones
+# فحص الهواتف الذكية
 
-Dans cette section, nous allons passer en revue quelques étapes qui sont génériques à tous les types de smartphones. Veuillez les considérer comme étant complémentaires aux sections sur [Android](https://pellaeon.gitbook.io/mobile-forensics/android) et [iOS](https://pellaeon.gitbook.io/mobile-forensics/ios) que vous pouvez trouver plus loin dans ce guide.
+نتناول في هذا القسم بعض الخطوات العامة لجميع أنواع الهواتف الذكية ويجب مراعاة أنها تستكمل الأقسام حول أجهزة آندرويد [(Android)](https://pellaeon.gitbook.io/mobile-forensics/android) و[iOS](https://pellaeon.gitbook.io/mobile-forensics/ios) التي يمكنك العثور عليها لاحقًا في هذا الدليل.
 
-**Avertissement :** en raison de leur modèle de sécurité et de leurs fonctionnalités, il est difficile de faire des analyses en direct sur un smartphone. Nous apportons ici quelques conseils sur ce qu'il convient de vérifier sur un appareil potentiellement compromis, mais ce processus est moins fiable que les processus sur Windows ou MacOS.
+**تحذير:** بسبب النموذج الأمني على الهاتف الذكي وخصائصه يصعب إجراء التحليلات الجنائية مباشرة عليه، وفيما يلي بعض الملاحظات حول ما يجب التحقق منه على جهاز يحتمل أن يكون مخترقًا ولكن هذه العملية أقل موثوقية من عمليات Windows أو MacOS.
